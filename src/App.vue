@@ -50,7 +50,7 @@
 	};
 </script>
 
-<style scoped lang="stylus">
+<style lang="stylus">
  @import "./common/stylus/mixin.styl"
 	.tab
 		display:flex
@@ -65,4 +65,6 @@
 				display:block
 				font-size:14px
 				color:rgb(77,85,93)
+      .active
+       color red
 </style>

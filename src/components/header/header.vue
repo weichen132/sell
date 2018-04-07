@@ -25,14 +25,27 @@
 			
 			
 			</div>
-			<div v-bind:if="seller.supports" class="support-count">
+			<div v-bind:if="seller.supports" class="support-count" @click="showDetial">
 				<span class="count">{{seller.supports.length}}个</span>
 				<i class="icon-keyboard_arrow_right"></i>
 			</div>
 		</div>
 		<div class="bulletin-wrapper">
 			<span class="bulletin-title"></span><span class="bulletin-text">{{seller.bulletin}}</span>
-			<i class="icon-keyboard_arrow_right"></i>
+			<i class="icon-keyboard_arrow_right" @click="showDetial"></i>
+		</div>
+		<div class="background">
+			<img v-bind:src="seller.avatar" alt="" width="100%" height="100%">
+		</div>
+		<div v-show="detialShow" class="detial">
+			<div class="detial-wrapper clearfix">
+				<div class="detial-main">
+					<h1 class="name">{{seller.name}}</h1>
+				</div>
+			</div>
+			<div class="detial-close">
+				<i class="icon-close"></i>
+			</div>
 		</div>
 	</div>
 </template>
@@ -42,6 +55,16 @@
 		props: {
 			seller: {
 				type: Object
+			}
+		},
+		data() {
+			return{
+				detialShow:false
+			}
+		},
+		methods: {
+			showDetial() {
+				this.detialShow=true
 			}
 		},
 		created() {
@@ -55,8 +78,10 @@
 
 
 	.header
+		position relative
 		color: #fff
-		background:#999
+		background:rgba(7,17,27,0.5)
+		overflow hidden
 		.content-wrapper
 			padding:24px 12px 18px 24px
 			font-size: 0px
@@ -142,7 +167,7 @@
 			.bulletin-title
 				display inline-block
 				vertical-align top
-				margin-top 7px
+				margin-top 8px
 				width 22px
 				height 12px
 				bg-image('bulletin')
@@ -157,5 +182,39 @@
 				right 12px
 				font-size 10px
 				top 8px
-				
+		.background
+			position absolute
+			width 100%
+			height 100%
+			top 0
+			left 0
+			z-index -1
+			filter blur(10px)
+		.detial
+			position fixed
+			top 0
+			left 0
+			width 100%
+			height 100%
+			background rgba(7,17,27,0.8)
+			overflow auto
+			z-index 100
+			.detial-wrapper
+				min-height 100%
+				width 100%
+				.detial-main
+					.name
+						font-size 16px
+						line-height 16px
+						font-weight 700
+						text-align center
+					margin-top 64px
+					padding-bottom 64px
+			.detial-close
+				position relative
+				width 32px
+				height 32px
+				margin -64px auto 0 auto
+				clear both
+				font-size 32px
 </style>
