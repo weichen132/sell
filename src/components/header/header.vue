@@ -37,13 +37,35 @@
 		<div class="background">
 			<img v-bind:src="seller.avatar" alt="" width="100%" height="100%">
 		</div>
-		<div v-show="detialShow" class="detial">
+		<div v-show="detialShow" class="detial" transition="fade">
 			<div class="detial-wrapper clearfix">
 				<div class="detial-main">
 					<h1 class="name">{{seller.name}}</h1>
+					<div class="star-wapper">
+						<star :size="48"	:score="seller.score"></star>
+					</div>
+					<div class="title">
+						<div class="line"></div>
+						<div class="text">优惠信息</div>
+						<div class="line"></div>
+					</div>
+					<ul v-if="seller.supports" class="supports">
+						<li class="supports-item" v-for="item in seller.supports">
+							<span class="icon" :class="classMap[seller.supports[$index].type]"></span>
+							<span class="text">{{seller.supports[$index].description}}</span>
+						</li>
+					</ul>
+					<div class="title">
+						<div class="line"></div>
+						<div class="text">商家公告</div>
+						<div class="line"></div>
+					</div>
+					<div class="bulletin">
+						<p class="content">{{seller.bulletin}}</p>
+					</div>
 				</div>
 			</div>
-			<div class="detial-close">
+			<div class="detial-close" @click="hideDetial">
 				<i class="icon-close"></i>
 			</div>
 		</div>
@@ -51,6 +73,8 @@
 </template>
 
 <script type="type/ecmascript-6">
+	import star from 'components/star/star';
+
 	export default {
 		props: {
 			seller: {
@@ -65,11 +89,16 @@
 		methods: {
 			showDetial() {
 				this.detialShow=true
+			},
+			hideDetial() {
+				this.detialShow=false
 			}
 		},
 		created() {
 			this.classMap=['decrease','discount','special','invoice','guarantee']
-		}
+		},
+		components:{star}
+
 	};
 </script>
 
@@ -196,9 +225,16 @@
 			left 0
 			width 100%
 			height 100%
-			background rgba(7,17,27,0.8)
 			overflow auto
 			z-index 100
+			transition all 0.5s
+			&.fade-transition
+				opacity 1
+				background rgba(7,17,27,0.8)
+				backdrop blur(10px)
+			&.fade-enter, &.fade-leave
+				opacity 0
+				background rgba(7,17,27,0)
 			.detial-wrapper
 				min-height 100%
 				width 100%
@@ -210,6 +246,64 @@
 						text-align center
 					margin-top 64px
 					padding-bottom 64px
+					.star-wapper
+						margin-top 18px
+						padding 2px 0px
+						text-align center
+					.title
+						display flex
+						width 80%
+						margin 28px auto 24px auto
+						.line
+							flex 1
+							position relative
+							top -6px
+							border-bottom  1px solid rgba(255,255,255,0.2)
+						.text
+							padding 0 12px
+							font-weight 700
+					.supports
+						width 80%
+						margin 0 auto
+						.supports-item
+							padding 0 12px
+							margin-bottom  12px
+							font-size 0px
+							&.last-child 
+								margin-bottom 0px
+							.icon
+								display inline-block
+								width 16px
+								height 16px
+								margin-right 6px
+								background-size 16px 16px
+								vertical-align top
+								background-repeat no-repeat
+								&.decrease
+										bg-image('decrease_2')
+								&.discount
+										bg-image('discount_2')
+								&.guarantee
+										bg-image('guarantee_2')
+								&.invoice
+										bg-image('invoice_2')
+								&.special
+										bg-image('special_2')
+							.text
+								display inline-block
+								font-size 12px
+								font-weight 200
+								color rgb(255,255,255)
+								line-height 16px
+					.bulletin
+						width 80%
+						margin 0 auto
+						.content
+							padding 0px 12px
+							font-size 12px
+							line-height 24px
+							font-weight 200
+							color rgb(255,255,255) 
 			.detial-close
 				position relative
 				width 32px
