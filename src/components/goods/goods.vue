@@ -37,10 +37,12 @@
 			</ul>
 		</div>
 	</div>
+	<shopcart></shopcart>
 </template>
 
 <script type="ecmascript-6">
 import BScroll from 'better-scroll';
+import shopcart from 'components/shopcart/shopcart';
 const ERROR_OK = 0;
 
 	export default{
@@ -116,7 +118,9 @@ const ERROR_OK = 0;
 						this.listHeight.push(height);
 					}
 				}
-		}
+		},
+		components: {shopcart:shopcart},
+		
 	}
 </script>
 
