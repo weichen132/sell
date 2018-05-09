@@ -37,7 +37,7 @@
 			</ul>
 		</div>
 	</div>
-	<shopcart></shopcart>
+	<shopcart :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
 </template>
 
 <script type="ecmascript-6">
