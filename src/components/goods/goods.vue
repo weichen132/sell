@@ -44,7 +44,6 @@
 import BScroll from 'better-scroll';
 import shopcart from 'components/shopcart/shopcart';
 const ERROR_OK = 0;
-
 	export default{
 		props: {
 			seller: {
@@ -72,7 +71,6 @@ const ERROR_OK = 0;
 		},
 		created() {
 			this.classMap=['decrease','discount','special','invoice','guarantee'];
-
 			this.$http.get('api/goods').then((response) => {
 				var response = response.body;
 				if(response.errno===ERROR_OK){
@@ -98,15 +96,12 @@ const ERROR_OK = 0;
 					this.meunScroll = new BScroll(this.$els.menuWrapper, {
 						click: true
 					});
-
 					this.foodsScroll = new BScroll(this.$els.foodsWrapper, {
 						 probeType: 3
 					});
-
 					this.foodsScroll.on('scroll', (pos) => {
 						this.scrollY = Math.abs(Math.round(pos.y));
 					});
-
 			},
 			 _calculateHeight() {
 					let foodList = this.$els.foodsWrapper.getElementsByClassName('food-list-hook');
@@ -126,7 +121,6 @@ const ERROR_OK = 0;
 
 <style lang="stylus" rel="stylesheet/stylus">
 @import "../../common/stylus/mixin";
-
 	.foods
 		display flex
 		position absolute
@@ -231,5 +225,4 @@ const ERROR_OK = 0;
 						position: absolute
 						right: 0
 						bottom: 12px
-
 </style>
