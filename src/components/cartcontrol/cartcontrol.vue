@@ -18,14 +18,21 @@ export default {
       }
   },
   methods: {
-      addCart() {
+      addCart(event) {
+          if (!event._constructed) {
+          return;
+          }
+          console.log("..")
           if(!this.food.count){
               Vue.set(this.food,'count',1);
           }else{
               this.food.count++;
           }
       },
-      decreaseCart() {
+      decreaseCart(event) {
+          if (!event._constructed) {
+          return;
+          }
           if(this.food.count){
               this.food.count--;
           }
@@ -67,8 +74,8 @@ export default {
             color: rgb(147, 153, 159)
         .cart-add
             display: inline-block
-        padding: 6px
-        line-height: 24px
-        font-size: 24px
-        color: rgb(0, 160, 220)
+            padding: 6px
+            line-height: 24px
+            font-size: 24px
+            color: rgb(0, 160, 220)
 </style>

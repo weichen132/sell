@@ -98,6 +98,7 @@ const ERROR_OK = 0;
 						click: true
 					});
 					this.foodsScroll = new BScroll(this.$els.foodsWrapper, {
+						 click: true,
 						 probeType: 3
 					});
 					this.foodsScroll.on('scroll', (pos) => {
