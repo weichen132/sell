@@ -43,6 +43,7 @@
 <script type="ecmascript-6">
 import BScroll from 'better-scroll';
 import shopcart from 'components/shopcart/shopcart';
+import cartcontrol from 'components/cartcontrol/cartcontrol';
 const ERROR_OK = 0;
 	export default{
 		props: {
@@ -114,7 +115,9 @@ const ERROR_OK = 0;
 					}
 				}
 		},
-		components: {shopcart:shopcart},
+		components: {shopcart:shopcart,
+					cartcontrol:cartcontrol
+		},
 		
 	}
 </script>

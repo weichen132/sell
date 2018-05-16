@@ -27,12 +27,12 @@
 			</div>
 			<div v-bind:if="seller.supports" class="support-count" @click="showDetial">
 				<span class="count">{{seller.supports.length}}个</span>
-				<i class="icon-keyboard_arrow_right"></i>
+				<i class="icon-thumb_up"></i>
 			</div>
 		</div>
 		<div class="bulletin-wrapper">
 			<span class="bulletin-title"></span><span class="bulletin-text">{{seller.bulletin}}</span>
-			<i class="icon-keyboard_arrow_right" @click="showDetial"></i>
+			<i class="icon-thumb_up" @click="showDetial"></i>
 		</div>
 		<div class="background">
 			<img v-bind:src="seller.avatar" alt="" width="100%" height="100%">
@@ -66,7 +66,7 @@
 				</div>
 			</div>
 			<div class="detial-close" @click="hideDetial">
-				<i class="icon-close"></i>
+				<i class="icon-remove_circle_outline"></i>
 			</div>
 		</div>
 	</div>
@@ -181,7 +181,7 @@
 					font-size 10px
 					margin-right 2px
 					vertical-align top
-				.icon-keyboard_arrow_right
+				.icon-thumb_up
 					font-size 10px
 					line-height 24px
 		.bulletin-wrapper
@@ -206,7 +206,7 @@
 				vertical-align top
 				font-size 10px
 				margin 0 4px
-			.icon-keyboard_arrow_right
+			.icon-thumb_up
 				position absolute
 				right 12px
 				font-size 10px
