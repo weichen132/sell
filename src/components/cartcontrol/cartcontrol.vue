@@ -4,7 +4,7 @@
             <span class="inner icon-shopping_cart"></span>
         </div>
         <div class="cart-count" v-show="food.count">{{food.count}}</div>
-        <div class="cart-add icon-thumb_down"@click="addCart"></div>
+        <div class="cart-add icon-thumb_down"@click.stop.prevent="addCart"></div>
     </div>
 </template>
 
