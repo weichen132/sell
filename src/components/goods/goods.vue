@@ -37,7 +37,7 @@
 			</ul>
 		</div>
 	</div>
-	<shopcart :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
+	<shopcart v-ref:shopcart :select-foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
 </template>
 
 <script type="ecmascript-6">
@@ -68,6 +68,17 @@ const ERROR_OK = 0;
 					}
 				}
 				return 0;
+			},
+			selectFoods() {
+				let foods = [];
+				this.goods.forEach( (good) => {
+					good.foods.forEach( (food) => {
+						if(food.count){
+							foods.push(food)
+						};
+					});
+					return foods;
+				})
 			}
 		},
 		created() {
