@@ -38,6 +38,7 @@
 		</div>
 	</div>
 	<shopcart v-ref:shopcart :select-foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
+	<!-- 父组件goods访问子组件，用v-ref -->
 </template>
 
 <script type="ecmascript-6">
@@ -104,6 +105,11 @@ const ERROR_OK = 0;
 				let el = foodList[index]
 				this.foodsScroll.scrollToElement(el, 300);
 			},
+			_drop(target) {// 3.调用子组件shopcart里面的drop方法，目的将参数传给子组件shopcart----父组件怎么访问子组件？，vue给我们提供了接口ref
+				this.$nextTick(() => {// 优化下落动画，异步执行
+					this.$refs.shopcart.drop(target);// 调用子组件的drop方法
+				})
+			},
 			_initScroll() {
 					this.meunScroll = new BScroll(this.$els.menuWrapper, {
 						click: true
@@ -130,7 +136,11 @@ const ERROR_OK = 0;
 		components: {shopcart:shopcart,
 					cartcontrol:cartcontrol
 		},
-		
+		events: {
+			'cart.add'(target) {//2.父组件接受到子组件cartcontrol的参数，在调用子组件shopcart里面的方法
+				this._drop(target);
+			}
+		}
 	}
 </script>
 

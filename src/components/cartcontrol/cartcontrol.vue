@@ -22,12 +22,12 @@ export default {
           if (!event._constructed) {
           return;
           }
-          console.log("..")
           if(!this.food.count){
               Vue.set(this.food,'count',1);
           }else{
               this.food.count++;
           }
+          this.$dispatch('cart.add', event.target);//1.点击加号传按钮的参数
       },
       decreaseCart(event) {
           if (!event._constructed) {
