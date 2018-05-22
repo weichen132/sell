@@ -4,6 +4,17 @@
             <div class="image-header">
                 <img :src="food.image">
             </div>
+            <div class="content">
+                <h1>{{food.name}}</h1>
+                <div>
+                    <span>月售{{food.sellCount}}份</span>
+                    <span>好评率{{food.rating}}%</span>
+                </div>
+                <div>
+                    <span>{{food.price}}</span>
+                    <span v-show="food.oldPrice">{{food.oldPrice}}</span>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -42,6 +53,19 @@ export default {
             transform translate3d(0, 0, 0)
         &.move-enter, &move-leave
             transform translate3d(100%, 0, 0)
+        .image-header
+            position: relative
+            width: 100%
+            height: 0
+            padding-top: 100%
+            img
+                position absolute
+                top 0
+                left 0
+                width 100%
+                height 100%
+        .content
+            padding 18px
 </style>
 
 
