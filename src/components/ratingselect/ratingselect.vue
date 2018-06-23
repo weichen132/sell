@@ -9,7 +9,7 @@
           class="count">{{negatives.length}}</span></span>
     </div>
     <div @click="toggleContent" class="switch" :class="{'on':onlyContent}">
-      <span class="icon-check_circle"></span>
+      <span class="icon-keyboard_arrow_right"></span>
       <span class="text">只看有内容的评价</span>
     </div>
   </div>
@@ -115,9 +115,9 @@
       color: rgb(147, 153, 159)
       font-size: 0
       &.on
-        .icon-check_circle
+        .icon-keyboard_arrow_right
           color: #00c850
-      .icon-check_circle
+      .icon-keyboard_arrow_right
         display: inline-block
         vertical-align: top
         margin-right: 4px

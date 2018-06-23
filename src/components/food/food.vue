@@ -4,7 +4,7 @@
       <div class="image-header">
         <img :src="food.image">
         <div class="back" @click="hide">
-          <i class="icon-arrow_lift"></i>
+          <i class="icon-add_circle"></i>
         </div>
       </div>
       <div class="content">
@@ -42,7 +42,7 @@
               </div>
               <div class="time">{{rating.rateTime | formatDate}}</div>
               <p class="text">
-                <span :class="{'icon-thumb_up':rating.rateType===0,'icon-thumb_down':rating.rateType===1}"></span>{{rating.text}}
+                <span :class="{'icon-arrow_lift':rating.rateType===0,'icon-check_circle':rating.rateType===1}"></span>{{rating.text}}
               </p>
             </li>
           </ul>
@@ -176,7 +176,7 @@
         position: absolute
         top: 10px
         left: 0
-        .icon-arrow_lift
+        .icon-add_circle
           display: block
           padding: 10px
           font-size: 20px
@@ -283,13 +283,13 @@
             line-height: 16px
             font-size: 12px
             color: rgb(7, 17, 27)
-            .icon-thumb_up, .icon-thumb_down
+            .icon-arrow_lift, .icon-check_circle
               margin-right: 4px
               line-height: 16px
               font-size: 12px
-            .icon-thumb_up
+            .icon-arrow_lift
               color: rgb(0, 160, 220)
-            .icon-thumb_down
+            .icon-check_circle
               color: rgb(147, 153, 159)
 
         .no-rating
