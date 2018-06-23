@@ -133,7 +133,7 @@ import BScroll from 'better-scroll';
           }
           let show = !this.fold;
           if (show) {
-            this.$nextTick(() => {
+            this.$nextTick(() => { // 一些需要在页面数据变化完成后才执行的函数需要写在$nextTick中 。
               if (!this.scroll) {
                 this.scroll = new BScroll(this.$els.listContent, {click: true});
               } else {
